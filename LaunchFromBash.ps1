@@ -12,10 +12,6 @@ $VcXsrvFullPath = "C:\Program Files\VcXsrv\VcXsrv.exe"
 $WorkingDir = "C:\"
 
 if (! (Get-Process -Name "vcxsrv" -ErrorAction SilentlyContinue)) {
-    #    $VcXsrv = New-Object -ComObject Shell.Application
-    #    $VcXsrv.ShellExecute("C:\Program Files\VcXsrv\config.xlaunch",
-    #                         "","","open", 0)
-    # Need to test below string before removing above "legacy" script.
     Start-Process -FilePath $VcXsrvFullPath -ArgumentList "-multiwindow"
 }
 
