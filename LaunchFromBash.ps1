@@ -15,6 +15,6 @@ if (! (Get-Process -Name "vcxsrv" -ErrorAction SilentlyContinue)) {
     Start-Process -FilePath $VcXsrvFullPath -ArgumentList "-multiwindow"
 }
 
-$Args = @("-c","-l", "DISPLAY=:0 $Command")
+$Args = @("run DISPLAY=:0 $Command")
 $Bash = New-Object -ComObject Shell.Application
-$Bash.ShellExecute("bash", $Args, $WorkingDir, "open", 0)
+$Bash.ShellExecute("ubuntu.exe", $Args, $WorkingDir, "open", 0)
