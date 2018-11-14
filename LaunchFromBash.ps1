@@ -9,12 +9,11 @@ $VcXsrvFullPath = "C:\Program Files\VcXsrv\VcXsrv.exe"
 # "C:\" will be as /mnt/c in bash, otherwise you can leave it an emptystring, "",
 # quotes need to be escaped as actual double-double quotes need to be passed
 # as an argument if being left empty.
-$WorkingDir = "C:\"
+$WorkingDir = ""
 
 if (! (Get-Process -Name "vcxsrv" -ErrorAction SilentlyContinue)) {
     Start-Process -FilePath $VcXsrvFullPath -ArgumentList "-multiwindow"
 }
 
-$Args = @("run DISPLAY=:0 $Command")
 $Bash = New-Object -ComObject Shell.Application
-$Bash.ShellExecute("ubuntu.exe", $Args, $WorkingDir, "open", 0)
+$Bash.ShellExecute("bash", "-l -c `"DISPLAY=:0 $Command`"", $WorkingDir, "open", 0)
